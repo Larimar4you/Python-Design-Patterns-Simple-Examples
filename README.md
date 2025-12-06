@@ -39,14 +39,76 @@ Python-Design-Patterns-Simple-Examples/
 │   ├── facade.py
 │   └── proxy.py
 │
-├── behavioral/        # Поведінкові патерни
-│   ├── strategy.py
-│   ├── observer.py
-│   ├── command.py
-│   ├── state.py
-│   └── iterator.py
 │
 └── README.md          # Цей файл
+```
+
+---
+
+📌 Таблиця застосування паттернів (текстова версія)
+
+• Поведінкові паттерни:
+
+Strategy → Динамічна заміна алгоритму без зміни класу → Реальний кейс: Алгоритми сортування, обчислення податків
+
+Observer → Повідомлення багатьох об’єктів про зміни стану → Реальний кейс: UI підписка на події, системи сповіщень
+
+Command → Інкапсуляція дій у вигляді об’єкта, зберігання та виконання → Реальний кейс: Undo/Redo, запуск завдань у черзі
+
+State → Зміна поведінки об'єкта при зміні стану → Реальний кейс: Клас Switch, ігрові стани персонажів
+
+Iterator → Послідовний доступ до елементів без розкриття структури → Реальний кейс: Перебір елементів списків, деревоподібних структур
+
+• Порождаючі паттерни:
+
+Singleton → Один екземпляр об'єкта для всього додатку → Реальний кейс: Логер, конфігурація
+
+Factory → Створення об'єктів без залежності від класу → Реальний кейс: Створення різних транспортних засобів
+
+Abstract Factory → Створення сімейств взаємопов’язаних об’єктів → Реальний кейс: UI теми (Dark/Light) з різними компонентами
+
+Builder → Поетапне створення складних об'єктів → Реальний кейс: Конструктор HTML форм, генерація документів
+
+Prototype → Клонування об'єктів без створення нового → Реальний кейс: Копіювання налаштувань користувача
+
+• Структурні паттерни:
+
+Adapter → Несумісні інтерфейси робимо сумісними → Реальний кейс: Підключення пристрою з іншою напругою
+
+Facade → Спрощений інтерфейс до складної системи → Реальний кейс: Клас ComputerFacade для старту комп'ютера
+
+Decorator → Динамічне розширення поведінки без зміни класу → Реальний кейс: HTML-рендеринг, логування функцій
+
+Proxy → Контроль доступу або оптимізація ресурсів → Реальний кейс: Віртуальні об’єкти, lazy loading зображень
+
+Composite → Робота з деревоподібними структурами об’єктів → Реальний кейс: Файлова система, UI компоненти
+
+## 🧠 Поведінкові патерни (Behavioral)
+
+### **Strategy — заміна алгоритмів на льоту**
+
+```python
+class Strategy:
+    def execute(self, a, b):
+        pass
+
+class Add(Strategy):
+    def execute(self, a, b):
+        return a + b
+
+class Multiply(Strategy):
+    def execute(self, a, b):
+        return a * b
+
+class Context:
+    def __init__(self, strategy):
+        self.strategy = strategy
+
+    def run(self, a, b):
+        return self.strategy.execute(a, b)
+
+ctx = Context(Add())
+ctx.run(2, 3)  # 5
 ```
 
 ---
@@ -132,36 +194,6 @@ def make_bold(func):
 @make_bold
 def hello():
     return "Hello"
-```
-
----
-
-## 🧠 Поведінкові патерни (Behavioral)
-
-### **Strategy — заміна алгоритмів на льоту**
-
-```python
-class Strategy:
-    def execute(self, a, b):
-        pass
-
-class Add(Strategy):
-    def execute(self, a, b):
-        return a + b
-
-class Multiply(Strategy):
-    def execute(self, a, b):
-        return a * b
-
-class Context:
-    def __init__(self, strategy):
-        self.strategy = strategy
-
-    def run(self, a, b):
-        return self.strategy.execute(a, b)
-
-ctx = Context(Add())
-ctx.run(2, 3)  # 5
 ```
 
 ---
