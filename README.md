@@ -161,7 +161,7 @@ class TransportFactory:
 
 ---
 
-## 🧩 Структурні патерни (Structural)
+## Структурні патерни (Structural)
 
 ### **Adapter — адаптер несумісних інтерфейсів**
 
